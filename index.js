@@ -23,7 +23,11 @@ client.on("message", async (message) => {
 });
 
 client.on("messageCreate", async (message) => {
-  console.log("Message registered!", message);
+  console.log("Message registered!", message.content);
+  const { content } = message;
+  if (content === "ping") {
+    message.reply("Pong!");
+  }
 });
 
 client.login(process.env.BOT_TOKEN);
