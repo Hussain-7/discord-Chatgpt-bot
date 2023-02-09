@@ -1,10 +1,12 @@
 const { Client, GatewayIntentBits } = require("discord.js");
-console.log("GatewayIntentBits: ", GatewayIntentBits);
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
     GatewayIntentBits.DirectMessages,
     GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.GuildMembers,
+    GatewayIntentBits.GuildPresences,
+    GatewayIntentBits.MessageContent,
   ],
 });
 
@@ -21,7 +23,7 @@ client.on("message", async (message) => {
 });
 
 client.on("messageCreate", async (message) => {
-  console.log("Message registered!");
+  console.log("Message registered!", message);
 });
 
 client.login(process.env.BOT_TOKEN);
