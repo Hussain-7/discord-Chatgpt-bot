@@ -51,11 +51,12 @@ client.on("messageCreate", async (message) => {
       const response = await openai.createCompletion({
         model: "text-davinci-003",
         prompt: content,
-        max_tokens: 7,
+        max_tokens: 15,
         temperature: 0,
       });
-      console.log(response);
-      message.reply(response.data.choices[0].text);
+      response.data.choices.forEach((choice) => {
+        message.reply(choice.text);
+      });
       break;
   }
 });
